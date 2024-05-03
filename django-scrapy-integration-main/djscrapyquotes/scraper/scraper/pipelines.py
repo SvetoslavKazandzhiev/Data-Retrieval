@@ -6,7 +6,7 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-from quotes.models import Quotes
+from quotes.models import CarListingDiscovery
 
 import logging, coloredlogs
 logger = logging.getLogger(__name__)
@@ -18,7 +18,7 @@ class ScraperPipeline:
 
     def process_item(self, item, spider):
         try:
-            Quotes.objects.create(text=item['text'], author=item['author'])
+            CarListingDiscovery.objects.create(text=item['text'], author=item['author'])
             print("\n")
             logger.warn("Loaded quote {}".format(item['text']))
             print(item)

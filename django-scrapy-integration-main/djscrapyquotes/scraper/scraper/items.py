@@ -8,6 +8,8 @@ import scrapy
 import pathlib
 
 
-class QuotesItem(scrapy.Item):
-    author = scrapy.Field()
-    text = scrapy.Field()
+class DiscoveredUrls(scrapy.Item):
+    external_id = scrapy.Field()
+    created_at = scrapy.Field()
+    url = scrapy.Field()
+    price = scrapy.Field()

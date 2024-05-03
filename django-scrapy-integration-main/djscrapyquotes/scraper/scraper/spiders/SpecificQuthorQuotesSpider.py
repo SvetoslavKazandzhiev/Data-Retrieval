@@ -1,5 +1,5 @@
 import scrapy
-from ..items import QuotesItem
+# from ..items import CarListingDiscovery
 
 """
 command: scrapy crawl some-quotes -a author="<author_name>" -L WARN
@@ -21,20 +21,21 @@ class SpecificAuthorQuotesSpider(scrapy.Spider):
         super().__init__(**kwargs)
 
     def parse(self, response, **kwargs):
-        item = QuotesItem()
-
-        all_div_quotes = response.css('div.quote')
-        for quote in all_div_quotes:
-            title = quote.css('span.text::text').extract_first().replace('”', '').replace("“", "")
-            author = quote.css('.author::text').extract_first()
-
-            # Check if author's name matches
-            if author.strip().lower() == self.author.strip().lower():
-                item['text'] = title
-                item['author'] = author
-                yield item
-
-        # Crawl Next Page
-        next_page = response.css('li.next a::attr(href)').get()
-        if next_page is not None:
-            yield response.follow(next_page, callback=self.parse)
+        pass
+        # item = CarListingDiscovery()
+        #
+        # all_div_quotes = response.css('div.quote')
+        # for quote in all_div_quotes:
+        #     title = quote.css('span.text::text').extract_first().replace('”', '').replace("“", "")
+        #     author = quote.css('.author::text').extract_first()
+        #
+        #     # Check if author's name matches
+        #     if author.strip().lower() == self.author.strip().lower():
+        #         item['text'] = title
+        #         item['author'] = author
+        #         yield item
+        #
+        # # Crawl Next Page
+        # next_page = response.css('li.next a::attr(href)').get()
+        # if next_page is not None:
+        #     yield response.follow(next_page, callback=self.parse)
