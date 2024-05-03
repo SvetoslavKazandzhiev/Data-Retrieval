@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc47c181-2c0e-4dd3-9bf8-94be60209a22" name="Changes" comment="" />
+    <list default="true" id="dc47c181-2c0e-4dd3-9bf8-94be60209a22" name="Changes" comment="Add model and spider">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +42,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -81,11 +84,31 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714721817668</updated>
-      <workItem from="1714721818668" duration="5523000" />
+      <workItem from="1714721818668" duration="12255000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1714741463775</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714741463775</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add model and spider">
+      <created>1714749357598</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714749357598</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="Add model and spider" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add model and spider" />
   </component>
 </project>
