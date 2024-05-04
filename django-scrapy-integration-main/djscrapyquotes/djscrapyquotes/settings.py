@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # django app
-    'quotes'
+    'carapp'
 ]
 
 MIDDLEWARE = [
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'djscrapyquotes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'carlisting',
+        'NAME': 'carslisting',
         'USER': 'root',
         'PASSWORD': 'Vikito33',
         'HOST': 'localhost',

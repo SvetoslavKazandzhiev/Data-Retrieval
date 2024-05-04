@@ -2,19 +2,19 @@ import scrapy
 # from ..items import CarListingDiscovery
 
 """
-command: scrapy crawl some-quotes -a author="<author_name>" -L WARN
+command: scrapy crawl some-carapp -a author="<author_name>" -L WARN
 
-Example: scrapy crawl some-quotes -a author="Albert Einstein" -L WARN
+Example: scrapy crawl some-carapp -a author="Albert Einstein" -L WARN
 
 Those author name should match the name on the site.
 """
 
 class SpecificAuthorQuotesSpider(scrapy.Spider):
-    """Extracts the quotes from specific author"""
+    """Extracts the carapp from specific author"""
 
     start_urls = ['https://quotes.toscrape.com/']
 
-    name = "some-quotes"
+    name = "some-carapp"
 
     def __init__(self, author=None, **kwargs):
         self.author = author

@@ -115,5 +115,5 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'djscrapyquotes.settings'
 django.setup()
 
 # This import should be here
-# from quotes.models import Quotes
+# from carapp.models import Quotes
 # ----------------------------------------------------------------------

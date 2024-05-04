@@ -3,9 +3,10 @@ from django.core.management import BaseCommand
 import os
 from pathlib import Path
 
+
 class Command(BaseCommand):
 
-    help = "Scrape the quotes from specific author"
+    help = "Scrape the cars from specific make"
 
     def add_arguments(self, parser):
         parser.add_argument('author_name',
@@ -14,5 +15,5 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         django_path = Path(__file__).resolve().parent.parent.parent.parent
         os.chdir(str(django_path)+"/scraper/")
-        os.system("scrapy crawl some-quotes -a author='{}' -L WARN".format(kwargs['author_name']))
+        os.system("scrapy crawl some-carapp -a make='{}' -L WARN".format(kwargs['author_name']))
         

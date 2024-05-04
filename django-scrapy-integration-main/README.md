@@ -35,7 +35,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'djscrapyquotes.settings'
 django.setup()
 
 # This import should be here. Import's doesn't needs to be relative to django project directory from scrapy project folder
-# from quotes.models import Quotes
+# from carapp.models import Quotes
 # ----------------------------------------------------------------------
 ```
 
