@@ -1,4 +1,5 @@
 from itemadapter import ItemAdapter
+import uuid
 from carapp.models import CarListingDiscovery
 
 import logging, coloredlogs
@@ -7,6 +8,9 @@ coloredlogs.install(level="WARN", logger=logger)
 
 
 class ScraperPipeline:
+
+    def __init__(self):
+        self.run_id = str(uuid.uuid4())
 
     def process_item(self, item, spider):
         try:
