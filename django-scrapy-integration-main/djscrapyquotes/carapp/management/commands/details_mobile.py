@@ -6,11 +6,11 @@ from pathlib import Path
 
 class Command(BaseCommand):
 
-    help = "Scrape the car listings"
+    help = "Scrape details page"
 
     def handle(self, *args, **kwargs):
         django_path = Path(__file__).resolve().parent.parent.parent.parent
 
         os.chdir(str(django_path)+"/scraper")
-        os.system("scrapy crawl discovery")
+        os.system("scrapy crawl details")
         

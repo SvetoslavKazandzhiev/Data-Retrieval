@@ -3,14 +3,14 @@ import datetime
 import scrapy
 from ..items import DiscoveredUrls
 from carapp.models import RunIDModel, CarListingDiscovery
-
+from .utilitys import text
 
 import codecs
 from pyquery import PyQuery as pq
 from datetime import datetime
 
 
-class QuotesSpider(scrapy.Spider):
+class DiscoveryMobileBGSpider(scrapy.Spider):
 
     start_urls = ['https://www.mobile.bg/obiavi/avtomobili-dzhipove/bmw']
     name = "discovery"
@@ -28,7 +28,7 @@ class QuotesSpider(scrapy.Spider):
         for data in data_container.items():
             title = data(' div.text > div.zaglavie > a').text()
             url = data(' div > div.big > a').attr('href').replace('//', 'https://')
-            description = data('.info').text()
+            description = text.clean_emoji(data('.info').text())
             price = data('.DOWN').text() or data('.price').text()
             price = price.replace('лв.', '').strip()
             pattern = r'\d{17}'

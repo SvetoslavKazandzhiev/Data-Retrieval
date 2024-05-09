@@ -1,27 +1,16 @@
 import scrapy
 # from ..items import CarListingDiscovery
+from .read_data import data_reader
 
-"""
-command: scrapy crawl some-carapp -a author="<author_name>" -L WARN
+class DetailsMobileSpider(scrapy.Spider):
+    """Extracts the car details on daily basis"""
 
-Example: scrapy crawl some-carapp -a author="Albert Einstein" -L WARN
-
-Those author name should match the name on the site.
-"""
-
-class SpecificAuthorQuotesSpider(scrapy.Spider):
-    """Extracts the carapp from specific author"""
-
-    start_urls = ['https://quotes.toscrape.com/']
-
-    name = "details mobile"
-
-    def __init__(self, author=None, **kwargs):
-        self.author = author
-        super().__init__(**kwargs)
+    FEED_EXPORT_ENCODING = 'windows-1251'
+    name = "details"
+    start_urls = [item[0] for item in data_reader()]
 
     def parse(self, response, **kwargs):
-        pass
+        print(response.body)
         # item = CarListingDiscovery()
         #
         # all_div_quotes = response.css('div.quote')
