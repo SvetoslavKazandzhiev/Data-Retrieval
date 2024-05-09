@@ -26,9 +26,9 @@ class QuotesSpider(scrapy.Spider):
         data_container = d('div .TOP')
 
         for data in data_container.items():
-            title = data(' div.text > div.zaglavie > a').text().encode('ascii', 'ignore')
-            url = data(' div > div.big > a').attr('href')
-            description = data('.info').text()
+            title = data(' div.text > div.zaglavie > a').text()#.encode('ascii', 'ignore')
+            url = data(' div > div.big > a').attr('href').replace('//', 'https://')
+            description = data('.info').text()#.encode('ascii', 'ignore')
             price = data('.DOWN').text() or data('.price').text()
             price = price.replace('лв.', '').strip()
             pattern = r'\d{17}'

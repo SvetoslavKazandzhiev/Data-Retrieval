@@ -15,7 +15,7 @@ class CarListingDiscovery(RunIDModel):
     external_id = models.CharField(max_length=50)
     title = models.CharField(max_length=150, blank=True, null=True)
     created_at = models.DateTimeField(max_length=100, auto_now_add=True)
-    url = models.CharField(max_length=100, blank=True, null=True)
+    url = models.CharField(max_length=1000, blank=True, null=True)
     price = models.CharField(max_length=50, blank=True, null=True)
     description = models.CharField(max_length=5000, blank=True, null=True)
 
