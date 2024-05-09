@@ -2,7 +2,7 @@ import re
 import datetime
 import scrapy
 from ..items import DiscoveredUrls
-from carapp.models import RunIDModel
+from carapp.models import RunIDModel, CarListingDiscovery
 
 
 import codecs
@@ -18,14 +18,15 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response, **kwargs):
         item = DiscoveredUrls()
-        run_id = RunIDModel()
-        print()
-        # LISTING URLS
+        run_id_instance = RunIDModel.objects.create()
+        parse_batch = run_id_instance.id
+
+        # LISTING DATA
         d = pq(response.body)
         data_container = d('div .TOP')
 
         for data in data_container.items():
-            title = data(' div.text > div.zaglavie > a').text()
+            title = data(' div.text > div.zaglavie > a').text().encode('ascii', 'ignore')
             url = data(' div > div.big > a').attr('href')
             description = data('.info').text()
             price = data('.DOWN').text() or data('.price').text()
@@ -40,7 +41,7 @@ class QuotesSpider(scrapy.Spider):
             item['url'] = url
             item['price'] = price
             item['description'] = description
-            item['parse_batch'] = run_id.run_id
-            # print(f'RUN_ID2:{run_id.run_id}')
+            item['parse_batch'] = parse_batch
+            print(f'RUN_ID2:{parse_batch}')
             yield item
 

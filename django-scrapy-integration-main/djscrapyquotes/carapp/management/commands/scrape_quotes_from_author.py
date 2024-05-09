@@ -6,7 +6,7 @@ from pathlib import Path
 
 class Command(BaseCommand):
 
-    help = "Scrape the cars from specific make"
+    help = "Scrape details page"
 
     def add_arguments(self, parser):
         parser.add_argument('author_name',

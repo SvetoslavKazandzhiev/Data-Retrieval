@@ -14,7 +14,7 @@ class SpecificAuthorQuotesSpider(scrapy.Spider):
 
     start_urls = ['https://quotes.toscrape.com/']
 
-    name = "some-carapp"
+    name = "details mobile"
 
     def __init__(self, author=None, **kwargs):
         self.author = author

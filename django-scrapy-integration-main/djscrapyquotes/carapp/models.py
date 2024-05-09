@@ -1,21 +1,23 @@
 from django.db import models
-from django.urls import reverse
 import uuid
 
 
 class RunIDModel(models.Model):
-    run_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+
+    def __unicode__(self):
+        return self.id
 
 
-class CarListingDiscovery(models.Model):
-    parse_batch = models.ForeignKey(RunIDModel, on_delete=models.CASCADE)
+class CarListingDiscovery(RunIDModel):
+    parse_batch = models.CharField(max_length=50, blank=True, null=True)
 
-    external_id = models.CharField(max_length=50, unique=True)
+    external_id = models.CharField(max_length=50)
     title = models.CharField(max_length=150, blank=True, null=True)
     created_at = models.DateTimeField(max_length=100, auto_now_add=True)
     url = models.CharField(max_length=100, blank=True, null=True)
     price = models.CharField(max_length=50, blank=True, null=True)
-    description = models.CharField(max_length=10000, blank=True, null=True)
+    description = models.CharField(max_length=5000, blank=True, null=True)
 
     class Meta:
         unique_together = ('parse_batch', 'external_id')
