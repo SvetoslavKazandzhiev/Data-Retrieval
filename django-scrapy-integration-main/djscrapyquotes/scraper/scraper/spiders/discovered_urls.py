@@ -26,9 +26,9 @@ class QuotesSpider(scrapy.Spider):
         data_container = d('div .TOP')
 
         for data in data_container.items():
-            title = data(' div.text > div.zaglavie > a').text()#.encode('ascii', 'ignore')
+            title = data(' div.text > div.zaglavie > a').text()
             url = data(' div > div.big > a').attr('href').replace('//', 'https://')
-            description = data('.info').text()#.encode('ascii', 'ignore')
+            description = data('.info').text()
             price = data('.DOWN').text() or data('.price').text()
             price = price.replace('лв.', '').strip()
             pattern = r'\d{17}'
@@ -42,6 +42,5 @@ class QuotesSpider(scrapy.Spider):
             item['price'] = price
             item['description'] = description
             item['parse_batch'] = parse_batch
-            print(f'RUN_ID2:{parse_batch}')
             yield item
 
