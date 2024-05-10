@@ -10,7 +10,8 @@ class DetailsMobileSpider(scrapy.Spider):
     start_urls = [item[0] for item in data_reader()]
 
     def parse(self, response, **kwargs):
-        print(response.body)
+        pass
+        # print(response.body)
         # item = CarListingDiscovery()
         #
         # all_div_quotes = response.css('div.quote')
