@@ -1,13 +1,17 @@
 import scrapy
 # from ..items import CarListingDiscovery
-from .read_data import data_reader
+from .read_data import GetLastBatch
+
+get_data = GetLastBatch()
+urls = get_data.get_last_batch_urls()
+
 
 class DetailsMobileSpider(scrapy.Spider):
     """Extracts the car details on daily basis"""
 
     FEED_EXPORT_ENCODING = 'windows-1251'
     name = "details"
-    start_urls = [item[0] for item in data_reader()]
+    start_urls = [item[0] for item in urls]
 
     def parse(self, response, **kwargs):
         pass

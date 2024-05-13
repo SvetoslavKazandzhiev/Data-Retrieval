@@ -1,49 +1,48 @@
-from django.conf import settings
-settings.configure()
-
-import os
-import django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Data-Retrieval.django-scrapy-integration-main.djscrapyquotes.djscrapyquotes.settings.py')
-django.setup()
-
 import mysql.connector
-from django.db import connection
-from MySQLdb import connect as sql_connect
-
 from mysql.connector import Error
 
 
-def data_reader():
+class GetLastBatch:
+    connection = mysql.connector.connect(
+        host='localhost',
+        database='carslistingdiscovery',
+        user='root',
+        port=3306,
+        password=''
+    )
 
-
-    try:
-        db_key = 'default'
-        connection = mysql.connector.connect(
-            host='localhost',
-            database='carslistingdiscovery',
-            user='root',
-            port=3306,
-            password=''
-        )
+    def get_last_batch(self):
         query = """
-                SELECT url
-                FROM carapp_carlistingdiscovery as cld
-                where cld.parse_batch = 308
-                limit 2
-                # ORDER BY cld.parse_batch DESC LIMIT 0, 1
-                """
-        cursor = connection.cursor()
-        cursor.execute(query)
-        records = cursor.fetchall()
-        # for l in  (list(records)):
-        print([item[0] for item in list(records)])
-        return list(records)
-    except Error as e:
-        print("Error reading data from MySQL table", e)
-    # finally:
-    #     if connection.is_connected():
-    #         connection.close()
-    #         cursor.close()
-    #         print("MySQL connection is closed")
+                SELECT cl.parse_batch 
+                FROM carapp_carlistingdiscovery as cl
+                ORDER BY cl.runidmodel_ptr_id DESC LIMIT 1;
 
-data_reader()
+                """
+        cursor = self.connection.cursor()
+        cursor.execute(query)
+        last_parse_batch = cursor.fetchall()
+        last_parse_batch = last_parse_batch[0][0]
+
+        return last_parse_batch
+
+    def get_last_batch_urls(self):
+        pb_number = self.get_last_batch()
+        try:
+            query = f'''
+                        SELECT url
+                        FROM carapp_carlistingdiscovery as cld
+                        where cld.parse_batch = {pb_number}
+                    '''
+            cursor = self.connection.cursor()
+            cursor.execute(query)
+            records = cursor.fetchall()
+            return list(records)
+        except Error as e:
+            print("Error reading data from MySQL table", e)
+        finally:
+            if self.connection.is_connected():
+                self.connection.close()
+                cursor.close()
+                print("MySQL connection is closed")
+
+

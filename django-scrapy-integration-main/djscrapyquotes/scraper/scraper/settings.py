@@ -108,7 +108,6 @@ ITEM_PIPELINES = {
 # Django project root level path
 django_path = Path(__file__).resolve().parent.parent.parent
 
-# 
 sys.path.append(str(django_path)+"/")
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'djscrapyquotes.settings'
