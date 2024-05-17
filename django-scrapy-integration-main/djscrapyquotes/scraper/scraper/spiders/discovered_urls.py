@@ -44,3 +44,7 @@ class DiscoveryMobileBGSpider(scrapy.Spider):
             item['parse_batch'] = parse_batch
             yield item
 
+        # # Crawl Next Page
+        # next_page = response.css('li.next a::attr(href)').get()
+        # if next_page is not None:
+        #     yield response.follow(next_page, callback=self.parse)

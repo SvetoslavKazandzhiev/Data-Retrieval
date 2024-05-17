@@ -22,6 +22,7 @@ class GetLastBatch:
                     SELECT url
                     FROM carapp_carlistingdiscovery as cld
                     where cld.parse_batch = {}
+                    limit 1
                 '''
 
     def get_last_batch_number(self):
@@ -47,3 +48,5 @@ class GetLastBatch:
                 cursor.close()
                 print("MySQL connection is closed")
 
+get_data = GetLastBatch()
+get_data.get_last_batch_number()
